@@ -1,7 +1,7 @@
 import { Center, Heading, Input, Card, Box, Image, Text, SimpleGrid } from '@chakra-ui/react';
 import { data } from '../utils/data';
 
-export const RecipeListPage = () => {
+export const RecipeListPage = ({ onSelectRecipe }) => {
   const recipes = data.hits;
 
   return (
@@ -11,7 +11,7 @@ export const RecipeListPage = () => {
 
       <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={4} w="full">
         {recipes.map(({ recipe }) => (
-          <Card w="full" p={4} boxShadow="md" key={recipe.label}>
+          <Card onClick={() => onSelectRecipe(recipe)} w="full" p={4} boxShadow="md" key={recipe.label}>
             <Box mb={4}>
               <Text fontSize="xl" fontWeight="bold">{recipe.label}</Text>
             </Box>
